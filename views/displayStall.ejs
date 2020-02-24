@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Sl No</th>
+                <th>Vendor Name</th>
+                <th>Stall Name</th>
+                <th>Stall Type</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+           <% for(var i = 0; i < stall.length; i++){ %>
+            <tr>
+                <td><%= i+1 %></td>
+                <td><%= stall[i].name %></td>
+                <td><%= stall[i].stallName %></td>
+                <td><%= stall[i].stallType %></td>
+                <td>
+                    <a class="btn btn-warning" href=""><i class="fa fa-pencil " aria-hidden="true" title="update"></i> Update</a> &nbsp;&nbsp;
+                    <a class="btn btn-danger" href=""><i class="fa fa-trash" aria-hidden="true" title="delete"></i> Delete</a> &nbsp;&nbsp;        
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
