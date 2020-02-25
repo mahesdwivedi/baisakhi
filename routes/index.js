@@ -15,12 +15,22 @@ router.get('/addStall/:name', function(req, res) {
 res.render('stall',{name:req.params.name});
 });
 
-router.get('/stallAllocation/:name', function(req, res) {
-  console.log(req.params.name);
-  stallSchema.find({name:req.params.name},(err, data) => {
+//GET updatePartyForm
+
+router.get('/updateParty/:id', function(req, res) {
+  partySchema.find({_id:req.params.id},(err,data) =>{
     if (err) console.log(err);
     else{
       console.log(data);
+    res.render('updatePartyForm', { "party" : data });
+  }
+  });
+  });
+
+router.get('/stallAllocation/:name', function(req, res) {
+  stallSchema.find({name:req.params.name},(err, data) => {
+    if (err) console.log(err);
+    else{
     res.render('displayStall', { "stall" : data });
   }
   
@@ -87,6 +97,39 @@ router.post('/addStall', function(req, res) {
   newStall.save()
     .then(res.redirect('/display'))
     .catch((err) => console.log(err))
+});
+
+//DELETE a row
+
+router.get('/deleteParty/:id', function(req, res, next){
+  
+  var query = { _id: req.params.id };
+
+    partySchema.deleteOne(query, function (err, result) {
+
+      if (err) {
+  
+          console.log("error query");
+  
+      }
+
+  res.redirect('/display')
+
+})
+});
+
+//UPDATE a row
+
+router.post('/updateParty/:id', function(req,res) {
+  
+  var myquery = { _id:req.params.id };
+  var newvalues = req.body;
+  partySchema.updateOne(myquery, newvalues, function(err) {
+    if (err) throw err;
+    else{
+      res.redirect('/display');
+    }
+    });
 });
 
   

@@ -20,8 +20,8 @@
             <td><%= party[i].address %></td>
             <td><%= party[i].phoneNo %></td>
             <td>
-                <a class="btn btn-warning" href=""><i class="fa fa-pencil " aria-hidden="true" title="update"></i> Update</a> &nbsp;&nbsp;
-                <a class="btn btn-danger" href=""><i class="fa fa-trash" aria-hidden="true" title="delete"></i> Delete</a> &nbsp;&nbsp;
+                <a class="btn btn-warning" href="/updateParty/<%=party[i].id %>"><i class="fa fa-pencil " aria-hidden="true" title="update"></i> Update</a> &nbsp;&nbsp;
+                <a class="btn btn-danger" href="/deleteParty/<%=party[i].id %>"><i class="fa fa-trash" aria-hidden="true" title="delete"></i> Delete</a> &nbsp;&nbsp;
                 <a class="btn btn-success" href="/addStall/<%=party[i].name %>"><i class="fa fa-plus" aria-hidden="true" title="add stall"></i>  Add Stall</a> &nbsp;&nbsp;&nbsp;&nbsp;
                 <a class="btn btn-dark" href="/stallAllocation/<%=party[i].name %>"><i class="fa fa-table" aria-hidden="true" title="view stall"></i> View Stalls</a> 
 
