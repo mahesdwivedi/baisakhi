@@ -27,6 +27,18 @@ router.get('/updateParty/:id', function(req, res) {
   });
   });
 
+//GET updateStallForm
+
+router.get('/updateStall/:id', function(req, res) {
+  stallSchema.find({_id:req.params.id},(err,data) =>{
+    if (err) console.log(err);
+    else{
+      console.log(data);
+    res.render('updateStallForm', { "stall" : data });
+  }
+  });
+  });
+
 router.get('/stallAllocation/:name', function(req, res) {
   stallSchema.find({name:req.params.name},(err, data) => {
     if (err) console.log(err);
@@ -99,7 +111,7 @@ router.post('/addStall', function(req, res) {
     .catch((err) => console.log(err))
 });
 
-//DELETE a row
+//DELETE party row
 
 router.get('/deleteParty/:id', function(req, res, next){
   
@@ -118,7 +130,26 @@ router.get('/deleteParty/:id', function(req, res, next){
 })
 });
 
-//UPDATE a row
+//DELETE stall row
+
+router.get('/deleteStall/:id', function(req, res, next){
+  
+  var query = { _id: req.params.id };
+  stallSchema.find({_id:req.params.id},(err,data) =>{
+    
+    stallSchema.deleteOne(query, function (err, result) {
+
+      if (err) {
+  
+          console.log("error query");
+  
+      }
+  res.redirect('/stallAllocation/'+data[0].name+'')
+})
+})
+});
+
+//UPDATE party row
 
 router.post('/updateParty/:id', function(req,res) {
   
@@ -128,6 +159,21 @@ router.post('/updateParty/:id', function(req,res) {
     if (err) throw err;
     else{
       res.redirect('/display');
+    }
+    });
+});
+
+//UPDATE stall row
+
+router.post('/updateStall/:id', function(req,res) {
+  
+  var myquery = { _id:req.params.id };
+  var newvalues = req.body;
+  stallSchema.updateOne(myquery, newvalues, function(err) {
+    if (err) throw err;
+    else{
+      console.log(newvalues.name)
+      res.redirect('/stallAllocation/'+newvalues.name+'');
     }
     });
 });

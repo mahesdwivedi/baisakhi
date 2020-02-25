@@ -19,8 +19,8 @@
                 <td><%= stall[i].stallName %></td>
                 <td><%= stall[i].stallType %></td>
                 <td>
-                    <a class="btn btn-warning" href=""><i class="fa fa-pencil " aria-hidden="true" title="update"></i> Update</a> &nbsp;&nbsp;
-                    <a class="btn btn-danger" href=""><i class="fa fa-trash" aria-hidden="true" title="delete"></i> Delete</a> &nbsp;&nbsp;        
+                    <a class="btn btn-warning" href="/updateStall/<%=stall[i].id %>"><i class="fa fa-pencil " aria-hidden="true" title="update"></i> Update</a> &nbsp;&nbsp;
+                    <a class="btn btn-danger" href="/deleteStall/<%=stall[i].id %>"><i class="fa fa-trash" aria-hidden="true" title="delete"></i> Delete</a> &nbsp;&nbsp;        
                 </td>
             </tr>
         <% } %>
