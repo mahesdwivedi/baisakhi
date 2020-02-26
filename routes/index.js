@@ -65,6 +65,19 @@ router.get('/display', function(req, res) {
 
 });
 
+//GET stallAllocation page
+
+router.get('/allStalls', function(req, res) {
+  stallSchema.find({},(err, data) => {
+    if (err) console.log(err);
+    else{
+    res.render('stallAllocation', { "stall" : data });
+  }
+});  
+
+});
+
+
 
 /* GET party page */
 
@@ -116,6 +129,12 @@ router.post('/addStall', function(req, res) {
 router.get('/deleteParty/:id', function(req, res, next){
   
   var query = { _id: req.params.id };
+  partySchema.find(query,(err,data) =>{
+    if (err) console.log(err);
+    var vendorName = data[0].name;
+    stallSchema.deleteMany({name:vendorName}, (err,data) =>{
+
+    
 
     partySchema.deleteOne(query, function (err, result) {
 
@@ -126,7 +145,8 @@ router.get('/deleteParty/:id', function(req, res, next){
       }
 
   res.redirect('/display')
-
+    })
+    })
 })
 });
 
@@ -179,5 +199,7 @@ router.post('/updateStall/:id', function(req,res) {
 });
 
   
-
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 module.exports = router;
