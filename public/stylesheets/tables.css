@@ -3,49 +3,14 @@
 
 /*Login Signup Page*/
 
-.searchbar{
-    margin-bottom: auto;
-    margin-top: auto;
-    height: 60px;
-    background-color: #353b48;
-    border-radius: 30px;
-    padding: 10px;
-    width: 1000px;
-    }
+body{
+    overflow-x: hidden;
+}
 
-    .search_input{
-    color: white;
-    border: 0;
-    outline: 0;
-    background: none;
-    caret-color:transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar> .search_input{
-    padding: 0 10px;
-    width: 800px;
-    caret-color:red;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
-
-    .search_icon{
-    height: 40px;
-    width: 40px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:white;
-    text-decoration:none;
-    }
+.admin-dashboard{
+    background-color: #0d172e   ;
+    padding: 0;
+}
 a:focus,a:hover,a{
     outline:none;
     text-decoration: none;
@@ -239,7 +204,7 @@ li,ul{
 .display-table {
     display: table;
     padding: 0;
-    height: 100%;
+    height: 100vh;
     width: 100%;
 }
 
@@ -251,7 +216,9 @@ li,ul{
 .display-table-cell {
     display: table-cell;
     float: none;
-    height: 100%;
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
 }
 
 .v-align {
@@ -463,7 +430,7 @@ header {
     font-size: 30px;
     font-weight: 500;
     margin: 0;
-    padding: 21px 0;
+    /* padding: 21px 0; */
 }
 .sales {
     background: #ffffff none repeat scroll 0 0;

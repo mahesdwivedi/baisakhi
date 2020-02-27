@@ -1,48 +1,58 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- <input
-type="text"
-id="myInput"
-onkeyup="myFunction()"
-placeholder="Search for vendor name "
-title="Type vendor name"
-/>
 
-<input
-type="text"
-id="myInput2"
-onkeyup="myFunction2()"
-placeholder="Search for stall name "
-title="Type vendor name"
-/>
-
-
-<table class="table table-striped" id="stalls">
-        <thead>
-            <tr>
-                <th>Sl No</th>
-                <th>Vendor Name</th>
-                <th>Stall Name</th>
-                <th>Stall Type</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-           <% for(var i = 0; i < stall.length; i++){ %>
-            <tr>
-                <td><%= i+1 %></td>
-                <td><%= stall[i].name %></td>
-                <td><%= stall[i].stallName %></td>
-                <td><%= stall[i].stallType %></td>
-                <td>
-                    <a class="btn btn-warning" href="/updateStall/<%=stall[i].id %>"><i class="fa fa-pencil " aria-hidden="true" title="update"></i> Update</a> &nbsp;&nbsp;
-                    <a class="btn btn-danger" href="/deleteStall/<%=stall[i].id %>"onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash" aria-hidden="true" title="delete"></i> Delete</a> &nbsp;&nbsp;        
-                </td>
-            </tr>
-        <% } %>
-        </tbody>
-    </table>
+ <div class="row">
+   <div class="col-md-2 admin-dashboard">
+    <%- include('tables') %>
+   </div>
+   <div class="col-md-10">
+     <h3>LIST OF STALLS</h3>
+    <input
+    type="text"
+    id="myInput"
+    onkeyup="myFunction()"
+    placeholder="Search for vendor name "
+    title="Type vendor name"
+    />
+    
+    <input
+    type="text"
+    id="myInput2"
+    onkeyup="myFunction2()"
+    placeholder="Search for stall name "
+    title="Type vendor name"
+    />
+    
+    
+    <table class="table table-striped" id="stalls">
+            <thead>
+                <tr>
+                    <th>Sl No</th>
+                    <th>Vendor Name</th>
+                    <th>Stall Name</th>
+                    <th>Stall Type</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+               <% for(var i = 0; i < stall.length; i++){ %>
+                <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= stall[i].name %></td>
+                    <td><%= stall[i].stallName %></td>
+                    <td><%= stall[i].stallType %></td>
+                    <td>
+                        <a class="btn btn-warning" href="/updateStall/<%=stall[i].id %>"><i class="fa fa-pencil " aria-hidden="true" title="update"></i> Update</a> &nbsp;&nbsp;
+                        <a class="btn btn-danger" href="/deleteStall/<%=stall[i].id %>"onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash" aria-hidden="true" title="delete"></i> Delete</a> &nbsp;&nbsp;        
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+   </div>
+ </div>
+ 
 
     <style>
         #myInput, #myInput2, #myInput3
@@ -59,6 +69,10 @@ title="Type vendor name"
         #stallTable{
             margin: 5px;
         }
+
+        thead{
+        background-color: #B0C4DE;
+    }
     </style>
     
     <script>

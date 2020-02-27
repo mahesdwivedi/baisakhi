@@ -77,6 +77,19 @@ router.get('/allStalls', function(req, res) {
 
 });
 
+//GET collections page
+
+router.get('/collections', function(req, res) {
+  stallSchema.find({},(err, data) => {
+    if (err) console.log(err);
+    else{
+    res.render('collections', { "stall" : data });
+  }
+});  
+
+});
+
+
 
 
 /* GET party page */
@@ -198,8 +211,4 @@ router.post('/updateStall/:id', function(req,res) {
     });
 });
 
-  
-function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
 module.exports = router;

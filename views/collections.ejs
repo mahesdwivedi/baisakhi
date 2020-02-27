@@ -7,14 +7,7 @@
 
    </div>
    <div class="col-md-10">
-    <h3>Stall Allocation</h3>
-    <input
-    type="text"
-    id="myInput"
-    onkeyup="myFunction()"
-    placeholder="Search for vendor name "
-    title="Type vendor name"
-    />
+    <h3>Stall Collections</h3>
     
     <input
     type="text"
@@ -24,13 +17,6 @@
     title="Type stall name"
     />
     
-    <input
-    type="text"
-    id="myInput3"
-    onkeyup="myFunction3()"
-    placeholder="Search for stall type "
-    title="Type stall type"
-    /> 
     <table class="table table-striped" id="stallTable"> 
         <thead>
             <tr>
@@ -38,6 +24,9 @@
                 <th>Vendor Name</th>
                 <th>Stall Name</th>
                 <th>Stall Type</th>
+                <th>Total</th>
+                <th>Paid</th>
+                <th>Due</th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +36,10 @@
                 <td><%= stall[i].name %></td>
                 <td><%= stall[i].stallName %></td>
                 <td><%= stall[i].stallType %></td>
+                <td><%= stall[i].total %></td>
+                <td><%= stall[i].paid %></td>
+                <td><%= stall[i].total - stall[i].paid %></td>
+
             </tr>
         <% } %>
         </tbody>
@@ -69,7 +62,6 @@
 
     #stallTable{
         margin: 5px;
-
     }
 
     thead{
