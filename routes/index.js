@@ -9,6 +9,11 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET home page. */
+router.get('/home', function(req, res) {
+  res.render('home', { title: 'Express' });
+});
+
 
 //GET stall allocation page
 router.get('/addStall/:name', function(req, res) {
